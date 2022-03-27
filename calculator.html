@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator 2k22</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .class{
+            background-image: linear-gradient(45deg,black, #483D8B);
+            height: 100vh;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .calculator{
+            position: absolute;
+            background-color: rgb(106,90,205);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 15px;
+            padding: 15px;
+        }
+        .button{
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            cursor: pointer;
+            margin: 3px;
+            background-color: rgb(131,111,255);
+            border: 1px;
+            border-color: white;
+            border-radius: 12px;
+            color: white;
+        }
+        .button:hover{
+            background: black;
+        }
+        #result{
+            width: 207px;
+            background-color: white;
+            border-radius: 5px;
+            height: 30px;
+            margin: 5px;
+            font-size: 25px;
+            color: black;
+            text-align: right;
+            padding: 5px;
+        }
+        .footer{
+            background-image: linear-gradient(45deg,black, #483D8B);
+        }
+        .footer p{
+            text-align: center;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="class">
+        <div class="calculator">
+            <h1>Calculadora</h1>
+            <p id="result"></p>
+            <table>
+                <tr>
+                    <td><button class="button" onclick="cleanResult()">C</button></td>
+                    <td><button class="button" onclick="deleteResult()"><</button></td>
+                    <td><button class="button" onclick="insert('/')">/</button></td>
+                    <td><button class="button" onclick="insert('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="insert('7')">7</button></td>
+                    <td><button class="button" onclick="insert('8')">8</button></td>
+                    <td><button class="button" onclick="insert('9')">9</button></td>
+                    <td><button class="button" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="insert('4')">4</button></td>
+                    <td><button class="button" onclick="insert('5')">5</button></td>
+                    <td><button class="button" onclick="insert('6')">6</button></td>
+                    <td><button class="button" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="insert('1')">1</button></td>
+                    <td><button class="button" onclick="insert('2')">2</button></td>
+                    <td><button class="button" onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button class="button" style="height: 106px" onclick="calculate()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="button" style="width: 106px" onclick="insert('0')">0</button></td>
+                    <td><button class="button" onclick="insert('.')">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <footer class="footer">
+        <p> Author: Adilson Jr.</p>
+        <p> March, 2022.</p>
+    </footer>
+    <script>
+        function insert(number){
+            var numberr = document.getElementById('result').innerHTML;
+            document.getElementById('result').innerHTML = numberr + number;
+        }
+        function cleanResult(){
+            document.getElementById('result').innerHTML = ''
+        }
+        function deleteResult(){
+            var delet = document.getElementById('result').innerHTML;
+            document.getElementById('result').innerHTML = delet.substring(0, delet.length-1);
+        }
+        function calculate(){
+            var result = document.getElementById('result').innerHTML; 
+            if(result){
+                document.getElementById('result').innerHTML = eval(result)
+            }else{
+                document.getElementById('result').innerHTML =  'Sem cálculos.'
+            }
+        }
+    </script>
+</body>
+</html>
